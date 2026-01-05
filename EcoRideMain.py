@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 from abc import ABC,abstractmethod
+=======
+from abc import ABC, abstractmethod
+
+>>>>>>> UC4
 
 class Vehicle(ABC):
     def __init__(self, vehicle_id, model, battery_percentage):
@@ -42,6 +47,10 @@ class Vehicle(ABC):
     def calculate_trip_cost(self):
         pass
 
+    @abstractmethod
+    def calculate_trip_cost(self):
+        pass
+
     def display(self):
         print("Vehicle_id: ", self.vehicle_id)
         print("Model: ", self.model)
@@ -69,6 +78,9 @@ class ElectricCar(Vehicle):
     def calculate_trip_cost(self):
         return super().calculate_trip_cost()
 
+    def calculate_trip_cost(self):
+        return super().calculate_trip_cost()
+
     def display(self):
         super().display()
         print("Seating_Capacity: ", self.seating_capacity)
@@ -93,6 +105,39 @@ class ElectricScooter(Vehicle):
     def calculate_trip_cost(self):
         return super().calculate_trip_cost()
 
+    def calculate_trip_cost(self):
+        return super().calculate_trip_cost()
+
     def display(self):
         super().display()
+<<<<<<< HEAD
         print("Max Speed Limit:", self.max_speed_limit)
+=======
+        print("Max Speed Limit:", self.max_speed_limit)
+
+
+def main():
+    print("Vehicle")
+    vehicle = Vehicle("V1", "Suzuki", 94)
+    vehicle.rental_price = 150
+    vehicle.maintenance_status = "Average"
+    vehicle.display()
+
+    print("\n --")
+    print("ElectricCar")
+    car = ElectricCar("C1", "Tesla", 90, 5)
+    car.rental_price = 500
+    car.maintenance_status = "Good to go"
+    car.display()
+
+    print("\n --")
+    print("ElectricScooter")
+    scooter = ElectricScooter("S1", "Ola", 80, 25)
+    scooter.rental_price = 300
+    scooter.maintenance_status = "OK"
+    scooter.display()
+
+
+if __name__ == "__main__":
+    main()
+>>>>>>> UC4
