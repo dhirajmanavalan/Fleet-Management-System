@@ -1,4 +1,7 @@
-class Vehicle:
+from abc import ABC, abstractmethod
+
+
+class Vehicle(ABC):
     def __init__(self, vehicle_id, model, battery_percentage):
         self.vehicle_id = vehicle_id
         self.model = model
@@ -36,6 +39,10 @@ class Vehicle:
         else:
             print(f"Rental price should be not negative {rental_price}")
 
+    @abstractmethod
+    def calculate_trip_cost(self):
+        pass
+
     def display(self):
         print("Vehicle_id: ", self.vehicle_id)
         print("Model: ", self.model)
@@ -60,6 +67,9 @@ class ElectricCar(Vehicle):
         else:
             print("Seating capacity not less than 1")
 
+    def calculate_trip_cost(self):
+        return super().calculate_trip_cost()
+
     def display(self):
         super().display()
         print("Seating_Capacity: ", self.seating_capacity)
@@ -81,6 +91,9 @@ class ElectricScooter(Vehicle):
         else:
             print(f"Max speed limit should 10km {max_speed_limit}")
 
+    def calculate_trip_cost(self):
+        return super().calculate_trip_cost()
+
     def display(self):
         super().display()
         print("Max Speed Limit:", self.max_speed_limit)
@@ -92,7 +105,7 @@ def main():
     vehicle.rental_price = 150
     vehicle.maintenance_status = "Average"
     vehicle.display()
-    
+
     print("\n --")
     print("ElectricCar")
     car = ElectricCar("C1", "Tesla", 90, 5)
