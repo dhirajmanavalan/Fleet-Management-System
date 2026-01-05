@@ -93,7 +93,6 @@ class ElectricScooter(Vehicle):
         else:
             raise ValueError("Max speed must be greater than 10 km/h")
 
-    # Scooter pricing
     def calculate_trip_cost(self, minutes):
         return 1.00 + (0.15 * minutes)
 
