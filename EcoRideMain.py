@@ -96,29 +96,3 @@ class ElectricScooter(Vehicle):
     def display(self):
         super().display()
         print("Max Speed Limit:", self.max_speed_limit)
-
-
-def main():
-    print("Vehicle")
-    vehicle = Vehicle("V1", "Suzuki", 94)
-    vehicle.rental_price = 150
-    vehicle.maintenance_status = "Average"
-    vehicle.display()
-    
-    print("\n --")
-    print("ElectricCar")
-    car = ElectricCar("C1", "Tesla", 90, 5)
-    car.rental_price = 500
-    car.maintenance_status = "Good to go"
-    car.display()
-
-    print("\n --")
-    print("ElectricScooter")
-    scooter = ElectricScooter("S1", "Ola", 80, 25)
-    scooter.rental_price = 300
-    scooter.maintenance_status = "OK"
-    scooter.display()
-
-
-if __name__ == "__main__":
-    main()
