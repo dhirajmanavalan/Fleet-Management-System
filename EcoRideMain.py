@@ -48,8 +48,12 @@ class Vehicle(ABC):
         pass
 
     @abstractmethod
-    def calculate_trip_cost(self):
+    def calculate_trip_cost(self, value):
         pass
+    
+    def process_rental(self,value):
+        cost = self.calculate_trip_cost(value)
+        print("Trip cost: ",cost)
 
     def display(self):
         print("Vehicle_id: ", self.vehicle_id)
@@ -78,8 +82,8 @@ class ElectricCar(Vehicle):
     def calculate_trip_cost(self):
         return super().calculate_trip_cost()
 
-    def calculate_trip_cost(self):
-        return super().calculate_trip_cost()
+    def calculate_trip_cost(self,distance):
+        return 5.00 + (0.50 * distance)
 
     def display(self):
         super().display()
@@ -105,11 +109,12 @@ class ElectricScooter(Vehicle):
     def calculate_trip_cost(self):
         return super().calculate_trip_cost()
 
-    def calculate_trip_cost(self):
-        return super().calculate_trip_cost()
+    def calculate_trip_cost(self,minutes):
+        return 1.00 + (0.15 * minutes)
 
     def display(self):
         super().display()
+<<<<<<< HEAD
 <<<<<<< HEAD
         print("Max Speed Limit:", self.max_speed_limit)
 =======
@@ -141,3 +146,6 @@ def main():
 if __name__ == "__main__":
     main()
 >>>>>>> UC4
+=======
+        print("Max Speed Limit:", self.max_speed_limit)
+>>>>>>> UC5
