@@ -40,8 +40,12 @@ class Vehicle(ABC):
             print(f"Rental price should be not negative {rental_price}")
 
     @abstractmethod
-    def calculate_trip_cost(self):
+    def calculate_trip_cost(self, value):
         pass
+    
+    def process_rental(self,value):
+        cost = self.calculate_trip_cost(value)
+        print("Trip cost: ",cost)
 
     def display(self):
         print("Vehicle_id: ", self.vehicle_id)
@@ -67,8 +71,8 @@ class ElectricCar(Vehicle):
         else:
             print("Seating capacity not less than 1")
 
-    def calculate_trip_cost(self):
-        return super().calculate_trip_cost()
+    def calculate_trip_cost(self,distance):
+        return 5.00 + (0.50 * distance)
 
     def display(self):
         super().display()
@@ -91,8 +95,8 @@ class ElectricScooter(Vehicle):
         else:
             print(f"Max speed limit should 10km {max_speed_limit}")
 
-    def calculate_trip_cost(self):
-        return super().calculate_trip_cost()
+    def calculate_trip_cost(self,minutes):
+        return 1.00 + (0.15 * minutes)
 
     def display(self):
         super().display()
