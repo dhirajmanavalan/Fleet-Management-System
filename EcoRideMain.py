@@ -1,15 +1,10 @@
-<<<<<<< HEAD
-from abc import ABC,abstractmethod
-=======
 from abc import ABC, abstractmethod
-
->>>>>>> UC4
 
 class Vehicle(ABC):
     def __init__(self, vehicle_id, model, battery_percentage):
         self.vehicle_id = vehicle_id
         self.model = model
-        self.__battery_percentage = battery_percentage
+        self.battery_percentage = battery_percentage
         self.__maintenance_status = "OK"
         self.__rental_price = 0
 
@@ -18,134 +13,90 @@ class Vehicle(ABC):
         return self.__battery_percentage
 
     @battery_percentage.setter
-    def battery_percentage(self, battery_percentage):
-        if 0 < battery_percentage <= 100:
-            self.__battery_percentage = battery_percentage
+    def battery_percentage(self, value):
+        if 0 <= value <= 100:
+            self.__battery_percentage = value
         else:
-            print(f"Battery percentage must be 0 and 100 {battery_percentage}")
+            raise ValueError("Battery percentage must be between 0 and 100")
 
     @property
     def maintenance_status(self):
         return self.__maintenance_status
 
     @maintenance_status.setter
-    def maintenance_status(self, maintenance_status):
-        self.__maintenance_status = maintenance_status
+    def maintenance_status(self, value):
+        self.__maintenance_status = value
 
     @property
     def rental_price(self):
         return self.__rental_price
 
     @rental_price.setter
-    def rental_price(self, rental_price):
-        if rental_price > 0:
-            self.__rental_price = rental_price
+    def rental_price(self, value):
+        if value >= 0:
+            self.__rental_price = value
         else:
-            print(f"Rental price should be not negative {rental_price}")
-     
-    @abstractmethod       
-    def calculate_trip_cost(self):
-        pass
+            raise ValueError("Rental price cannot be negative")
 
     @abstractmethod
     def calculate_trip_cost(self, value):
         pass
-    
-    def process_rental(self,value):
+
+    def process_rental(self, value):
         cost = self.calculate_trip_cost(value)
-        print("Trip cost: ",cost)
+        print("Trip Cost:", cost)
 
     def display(self):
-        print("Vehicle_id: ", self.vehicle_id)
-        print("Model: ", self.model)
-        print("Battery_Percentage: ", self.battery_percentage)
-        print("Maintenance_Status: ", self.maintenance_status)
-        print("Rental_Price: ", self.rental_price)
-
+        print("Vehicle ID:", self.vehicle_id)
+        print("Model:", self.model)
+        print("Battery %:", self.battery_percentage)
+        print("Maintenance Status:", self.maintenance_status)
+        print("Rental Price:", self.rental_price)
 
 class ElectricCar(Vehicle):
     def __init__(self, vehicle_id, model, battery_percentage, seating_capacity):
         super().__init__(vehicle_id, model, battery_percentage)
-        self.__seating_capacity = seating_capacity
+        self.seating_capacity = seating_capacity
 
     @property
     def seating_capacity(self):
         return self.__seating_capacity
 
     @seating_capacity.setter
-    def seating_capacity(self, seating_capacity):
-        if seating_capacity > 0:
-            self.__seating_capacity = seating_capacity
+    def seating_capacity(self, value):
+        if value > 0:
+            self.__seating_capacity = value
         else:
-            print("Seating capacity not less than 1")
-            
-    def calculate_trip_cost(self):
-        return super().calculate_trip_cost()
+            raise ValueError("Seating capacity must be greater than 0")
 
-    def calculate_trip_cost(self,distance):
-        return 5.00 + (0.50 * distance)
+    def calculate_trip_cost(self, distance_km):
+        return 5.00 + (0.50 * distance_km)
 
     def display(self):
         super().display()
-        print("Seating_Capacity: ", self.seating_capacity)
+        print("Seating Capacity:", self.seating_capacity)
 
 
 class ElectricScooter(Vehicle):
     def __init__(self, vehicle_id, model, battery_percentage, max_speed_limit):
         super().__init__(vehicle_id, model, battery_percentage)
-        self.__max_speed_limit = max_speed_limit
+        self.max_speed_limit = max_speed_limit
 
     @property
     def max_speed_limit(self):
         return self.__max_speed_limit
 
     @max_speed_limit.setter
-    def max_speed_limit(self, max_speed_limit):
-        if max_speed_limit > 10:
-            self.__max_speed_limit = max_speed_limit
+    def max_speed_limit(self, value):
+        if value > 10:
+            self.__max_speed_limit = value
         else:
-            print(f"Max speed limit should 10km {max_speed_limit}")
-            
-    def calculate_trip_cost(self):
-        return super().calculate_trip_cost()
+            raise ValueError("Max speed must be greater than 10 km/h")
 
-    def calculate_trip_cost(self,minutes):
+    # Scooter pricing
+    def calculate_trip_cost(self, minutes):
         return 1.00 + (0.15 * minutes)
 
     def display(self):
         super().display()
-<<<<<<< HEAD
-<<<<<<< HEAD
         print("Max Speed Limit:", self.max_speed_limit)
-=======
-        print("Max Speed Limit:", self.max_speed_limit)
-
-
-def main():
-    print("Vehicle")
-    vehicle = Vehicle("V1", "Suzuki", 94)
-    vehicle.rental_price = 150
-    vehicle.maintenance_status = "Average"
-    vehicle.display()
-
-    print("\n --")
-    print("ElectricCar")
-    car = ElectricCar("C1", "Tesla", 90, 5)
-    car.rental_price = 500
-    car.maintenance_status = "Good to go"
-    car.display()
-
-    print("\n --")
-    print("ElectricScooter")
-    scooter = ElectricScooter("S1", "Ola", 80, 25)
-    scooter.rental_price = 300
-    scooter.maintenance_status = "OK"
-    scooter.display()
-
-
-if __name__ == "__main__":
-    main()
->>>>>>> UC4
-=======
-        print("Max Speed Limit:", self.max_speed_limit)
->>>>>>> UC5
