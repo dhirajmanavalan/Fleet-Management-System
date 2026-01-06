@@ -129,7 +129,31 @@ def search_by_battery():
 
     for vehicle in high_battery_vehicles:
         vehicle.display()
-        
+
+def view_by_vehicle_type():
+    catergorized = {"Electric Car": [], "Electric Scooter": []}
+
+    for hub in Fleet_hubs:
+        for vehicle in Fleet_hubs[hub]:
+            if isinstance(vehicle, ElectricCar):
+                catergorized["Electric Car"].append(vehicle)
+            elif isinstance(vehicle, ElectricScooter):
+                catergorized["Electric Scooter"].append(vehicle)
+
+    print("Electric Cars...")
+    if not catergorized["Electric Car"]:
+        print("No Electric Cars available")
+    else:
+        for car in catergorized["Electric Car"]:
+            car.display()
+
+    print("Electric Scooters...")
+    if not catergorized["Electric Scooter"]:
+        print("No Electric Scooters are available")
+    else:
+        for scooter in catergorized["Electric Scooter"]:
+            scooter.display()
+
 
 def main():
     while True:
@@ -139,8 +163,8 @@ def main():
         print("3. View All Hubs")
         print("4. Search Vehicles by Hub")
         print("5. Search Vehicles with Battery > 80%")
-        print("6. Exit")
-
+        print("6. View Vehicles by Type")
+        print("7. Exit")
 
         choice = int(input("Enter your choice: "))
 
@@ -160,6 +184,9 @@ def main():
             search_by_battery()
         
         elif choice == 6:
+            view_by_vehicle_type()
+
+        elif choice == 7:
             print("Exit...")
             break
 
