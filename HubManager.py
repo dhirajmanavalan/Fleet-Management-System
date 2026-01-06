@@ -37,14 +37,42 @@ def add_vehicles_hub():
     if choice == 1:
         seats = int(input("Enter Seating Capacity: "))
         electric_car = ElectricCar(vehicle_id, model, battery, seats)
+        
+        duplicate_found = False
+
+        for v in Fleet_hubs[hub_name]:
+            if v == electric_car:
+                duplicate_found = True
+                break
+            
+        if duplicate_found:
+            print("Duplicate Vehicle ID...Vehicle already exists in this hub..")
+            return
+        
         Fleet_hubs[hub_name].append(electric_car)
-        print("electric car is added")
+        print("Electric car is added")
+
+        
+        
         
     elif choice == 2:
         speed = int(input("Enter Max Speed Limit: "))
         electric_scooter = ElectricScooter(vehicle_id, model, battery, speed)
+
+        duplicate_found = False
+
+        for v in Fleet_hubs[hub_name]:
+            if v == electric_scooter:
+                duplicate_found = True
+                break
+
+        if duplicate_found:
+            print("Duplicate Vehicle ID..Vehicle already exists in this hub..")
+            return
+
         Fleet_hubs[hub_name].append(electric_scooter)
-        print("electric scooter is added")
+        print("Electric scooter is added")
+
         
     else:
         print("Invalid_choice")

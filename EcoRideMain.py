@@ -44,7 +44,17 @@ class Vehicle(ABC):
 
     def process_rental(self, value):
         cost = self.calculate_trip_cost(value)
+<<<<<<< HEAD
         print("Trip Cost:", cost)
+=======
+        print("Trip cost: ", cost)
+        
+    def __eq__(self, value):
+        if isinstance(value,Vehicle):            
+            return self.vehicle_id == value.vehicle_id
+        return False
+        
+>>>>>>> UC7
 
     def display(self):
         print("Vehicle ID:", self.vehicle_id)
